@@ -11,7 +11,8 @@
         <div class="list-reset">
           <div class="task" 
             v-for="(task, $taskIndex) of column.tasks" 
-            :key="$taskIndex">
+            :key="$taskIndex"
+            @click="goToTask(task)">
             <span class="w-full flex-no-shrink font-bold">
               {{ task.name }}
             </span>
@@ -22,7 +23,12 @@
         </div>
       </div>
     </div>
-    <div class="task-bg" v-if="isTaskOpen">
+    <!-- Self only applies the click to the target not the children -->
+    <div
+      class="task-bg"
+      v-if="isTaskOpen"
+      @click.self="close">
+      <!-- Nested router -->
       <router-view/>
     </div>
   </div>
@@ -36,6 +42,14 @@ export default {
     ...mapState(['board']),
     isTaskOpen() {
       return this.$route.name === 'task'
+    }
+  },
+  methods: {
+    goToTask(task) {
+      this.$router.push(`/task/${task.id}`)
+    },
+    close() {
+      this.$router.push('/')
     }
   }
 };
