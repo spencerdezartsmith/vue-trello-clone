@@ -30,12 +30,20 @@
               {{ task.description }}
             </p>
           </div>
+          <input
+            class="block p-2 w-full bg-transparent"
+            type="text"
+            placeholder="Enter new task"
+            @keyup.enter="createTask($event, column.tasks)">
         </div>
+      </div>
+      <div class="column flex">
         <input
-          class="block p-2 w-full bg-transparent"
-          type="text"
-          placeholder="Enter new task"
-          @keyup.enter="createTask($event, column.tasks)">
+          v-model="newColumnName"
+          class="p-2 mr-2 flex-grow"
+          type='text'
+          placeholder="New Column Name"
+          @keyup.enter="createColumn"/>       
       </div>
     </div>
     <!-- Self only applies the click to the target not the children -->
@@ -53,6 +61,11 @@
 import { mapState } from 'vuex'
 
 export default {
+  data() {
+    return {
+      newColumnName: ''
+    }
+  },
   computed: {
     ...mapState(['board']),
     isTaskOpen() {
@@ -69,6 +82,10 @@ export default {
     createTask(e, tasks) {
       this.$store.commit('CREATE_TASK', { tasks, name: e.target.value })
       e.target.value = ''
+    },
+    createColumn() {
+      this.$store.commit('CREATE_COLUMN', { name: this.newColumnName })
+      this.newColumnName = ''
     },
     pickupTask(e, taskIdx, fromColumnIdx) {
       e.dataTransfer.effectAllowed = 'move'
