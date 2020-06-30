@@ -7,21 +7,21 @@ export default {
       name: 'todo',
       tasks: [
         {
-          description: '',
+          description: 'The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.',
           name: 'first task',
-          id: 1,
+          id: uuid(),
           userAssigned: null
         },
         {
-          description: '',
+          description: 'The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.',
           name: 'second task',
-          id: 2,
+          id: uuid(),
           userAssigned: null
         },
         {
-          description: '',
+          description: 'The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.',
           name: 'and thrid',
-          id: 3,
+          id: uuid(),
           userAssigned: null
         }
       ]
@@ -30,9 +30,9 @@ export default {
       name: 'in-progress',
       tasks: [
         {
-          description: '',
+          description: 'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
           name: 'first task',
-          id: 4,
+          id: uuid(),
           userAssigned: null
         }
       ]
@@ -41,9 +41,9 @@ export default {
       name: 'done',
       tasks: [
         {
-          description: '',
+          description: 'The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.',
           name: 'first task',
-          id: 5,
+          id: uuid(),
           userAssigned: null
         }
       ]

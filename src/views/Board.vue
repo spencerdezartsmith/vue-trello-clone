@@ -21,6 +21,11 @@
             </p>
           </div>
         </div>
+        <input
+          class="block p-2 w-full bg-transparent"
+          type="text"
+          placeholder="Enter new task"
+          @keyup.enter="createTask($event, column.tasks)">
       </div>
     </div>
     <!-- Self only applies the click to the target not the children -->
@@ -50,6 +55,10 @@ export default {
     },
     close() {
       this.$router.push('/')
+    },
+    createTask(e, tasks) {
+      this.$store.commit('CREATE_TASK', { tasks, name: e.target.value })
+      e.target.value = ''
     }
   }
 };
